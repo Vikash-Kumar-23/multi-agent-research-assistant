@@ -22,7 +22,7 @@ If `uv` is unavailable, use `py -m venv .venv`, `.venv\Scripts\Activate.ps1`, `p
 
 Run tests with `pytest`.
 
-Required environment variables are `GEMINI_API_KEY`, `GEMINI_MODEL`, and `TAVILY_API_KEY`. The default model is `gemini-2.5-flash`; change `GEMINI_MODEL` if a different model is enabled for your account. Existing search, scraping, timeout, report-token, and temperature settings remain supported.
+Required environment variables are `GEMINI_API_KEY`, `GEMINI_MODEL`, and `TAVILY_API_KEY`. The default model is `gemini-3.8-flash`; change `GEMINI_MODEL` if a different model is enabled for your account. Existing search, scraping, timeout, report-token, and temperature settings remain supported.
 
 ## Configuration and safety
 

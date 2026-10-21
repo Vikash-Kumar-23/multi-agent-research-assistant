@@ -16,7 +16,7 @@ def test_url_validation_requires_http():
 def test_scraper_removes_non_content_elements():
     response = Mock(content=b"<html><title>News</title><nav>Menu</nav><main>Hello <b>world</b></main><script>bad()</script></html>", headers={})
     response.raise_for_status.return_value = None
-    with patch("tools.web_scraper.requests.get", return_value=response):
+    with patch("tools.web_scraper.socket.getaddrinfo", return_value=[(0, 0, 0, "", ("93.184.216.34", 0))]), patch("tools.web_scraper.requests.get", return_value=response):
         result = scrape_webpage.invoke({"url": "https://example.com", "max_chars": 1000})
     assert result["title"] == "News"
     assert result["text"] == "Hello world"
@@ -26,5 +26,5 @@ def test_scraper_propagates_http_errors():
     response = Mock()
     response.raise_for_status.side_effect = RuntimeError("HTTP error")
     response.headers = {}
-    with patch("tools.web_scraper.requests.get", return_value=response), pytest.raises(RuntimeError, match="HTTP error"):
+    with patch("tools.web_scraper.socket.getaddrinfo", return_value=[(0, 0, 0, "", ("93.184.216.34", 0))]), patch("tools.web_scraper.requests.get", return_value=response), pytest.raises(RuntimeError, match="HTTP error"):
         scrape_webpage.invoke({"url": "https://example.com"})

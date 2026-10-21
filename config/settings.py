@@ -9,7 +9,7 @@ load_dotenv()
 class Settings(BaseModel):
     gemini_api_key: str = Field(default_factory=lambda: os.getenv("GEMINI_API_KEY", ""))
     tavily_api_key: str = Field(default_factory=lambda: os.getenv("TAVILY_API_KEY", ""))
-    gemini_model: str = Field(default_factory=lambda: os.getenv("GEMINI_MODEL", "gemini-2.5-flash"))
+    gemini_model: str = Field(default_factory=lambda: os.getenv("GEMINI_MODEL", "gemini-3.8-flash"))
     max_search_results: int = Field(default=5, ge=1, le=20)
     max_sources_to_read: int = Field(default=5, ge=1, le=20)
     max_chars_per_source: int = Field(default=12000, ge=1000, le=50000)
